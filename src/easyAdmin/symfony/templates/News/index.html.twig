@@ -8,7 +8,15 @@
 
         {% if news|length > 0 %}
 
-            <div>There are {{ news|length }} elements of list.</div>
+            <div>There are {{ news|length }} elements of list. News from kommersant.ru</div>
+            <h5 class="tags" style="cursor: pointer">Tags<strong> ></strong></h5>
+            <div class="toggle" >
+            <ul>
+            {% for tag in tags %}
+                <li style="list-style-type: circle">{{ tag.name }} = {{ tag.val }}</li>
+            {% endfor %}
+            </ul>
+            </div>
             <br/>
             {% set count = 1 %}
             {% for new in news %}
@@ -28,7 +36,7 @@
                         <h3 class="box-title"><a id="{{ anchor }}"><span class="label label-primary" id="{{ count }}">{{ count }}</span> {{ new.title }}</a></h3>
                     </div>
                     <div class="box-body">
-                        <a id="{{ anchor }}">{{ new.text }}</a>
+                        <a id="{{ anchor }}">{{ new.text|raw }}</a>
                     </div>
                     <!-- /.box-body -->
                 </div>

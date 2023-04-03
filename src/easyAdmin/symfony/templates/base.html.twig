@@ -125,6 +125,16 @@
                         }
                     }, 500);
 
+                    $('.toggle').slideUp();
+
+                    $('.toggle, .tags').click(function(){
+                            if($('.toggle').css('display')=='none'){
+                                $('.toggle').slideDown();
+                            }else{
+                                $('.toggle').slideUp();
+                            }
+                    });
+
                 });
             </script>
         {% endblock %}

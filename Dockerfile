@@ -11,12 +11,13 @@ RUN apt-get update && yes|apt-get install -y \
 	libpq-dev \
 	zlib1g-dev \
         wget \
-        git 
+        git \
+    libxml2-dev
 #            --no-install-recommends
 
 RUN apt-get update && yes|apt-get install -y libpq-dev
 
-RUN docker-php-ext-install pdo pgsql pdo_mysql pdo_pgsql zip exif \
+RUN docker-php-ext-install pdo pgsql pdo_mysql pdo_pgsql zip exif xml xmlrpc \
 	&& docker-php-ext-configure gd \
 	&& docker-php-ext-install gd 
 
