@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Страница списка Автогенерации{% endblock %}
+
+{% block body %}
+<!-- Main content -->
+<section class="content">
+
+        {% if news|length > 0 %}
+
+            <div>There are {{ news|length }} elements of list.</div>
+            <br/>
+            {% set count = 1 %}
+            {% for new in news %}
+                {% set anchor = 'scroll-' ~ count %}
+                {% if count == news|length %}
+                    {% set anchor = 'scroll-last' %}
+                {% endif %}
+                {% if count == 1 %}
+                    {% set anchor = 'scroll-first' %}
+                {% endif %}
+                <div class="box box-info" style="
+                border-left: 1px solid #00c0ef !important;
+                border-right: 1px solid #00c0ef !important;
+                border-bottom: 1px solid #00c0ef !important;
+                " >
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><a id="{{ anchor }}"><span class="label label-primary" id="{{ count }}">{{ count }}</span> {{ new.title }}</a></h3>
+                    </div>
+                    <div class="box-body">
+                        <a id="{{ anchor }}">{{ new.text }}</a>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+                {% set count = count + 1 %}
+            {% endfor %}
+        {% else %}
+            <div>No elements have been posted yet for this list.</div>
+        {% endif %}
+
+</section>
+<!-- /.content -->
+
+{% endblock %}

@@ -1,0 +1,1 @@
+cat news.sql | docker exec -it mariadb /usr/bin/mysql -u root --password=rootpwd6421
